@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Result page</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{url_for('static',filename='/result.css')}}">
+{% endblock %}
+
+
+{% block body %}
+<div class="main_container">
+    <div class="game_title">
+        <h1>Rock Paper Scissor Game</h1>
+    </div>
+    <div class="players_container">
+        <div class="container_1">
+            <div class="score">
+                <h3>User Score: {{result.user_score}}</h3>
+            </div>
+            <div class="choice">
+                {% if 'ROCK'==result.user_choice %}
+                    <div class="rock_container container user_container">
+
+                    </div>
+                {% elif 'PAPER'==result.user_choice %}
+                    <div class="paper_container container user_container">
+
+                    </div>
+                {% elif 'SCISSOR'==result.user_choice %}
+                    <div class="scissor_container container user_container">
+
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="container_1">
+            <div class="score">
+                <h3>Computer Score: {{result.com_score}}</h3>
+            </div>
+            <div class="choice">
+                {% if 'ROCK'==result.com_choice %}
+                    <div class="rock_container container com_container">
+
+                    </div>
+                {% elif 'PAPER'==result.com_choice %}
+                    <div class="paper_container container com_container">
+
+                    </div>
+                {% elif 'SCISSOR'==result.com_choice %}
+                    <div class="scissor_container container com_container">
+
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="result_container">
+        {% if 'yellow'==result.color %}
+            <h2 class="result yellow">{{result.result}}</h2>
+        {% elif 'green'==result.color%}
+            <h2 class="result green">{{result.result}}</h2>
+        {% else %}
+            <h2 class="result red">{{result.result}}</h2>
+        {% endif %}
+    </div>
+    <div class="buttons_container">
+        <div class="button">
+            <a href="{{url_for('playAgain')}}">Play Again</a>
+        </div>
+        <div class="button">
+            <a href="{{url_for('startOver')}}">Start Over</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
